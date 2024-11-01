@@ -1,6 +1,14 @@
 const express = require("express");
+const { engine } = require("express-handlebars");
+
 const mysql = require("mysql");
+
 const app = express();
+
+// configuracao do express-handlebars
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", "./views");
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -20,8 +28,7 @@ db.connect((erro) => {
 });
 
 app.get("/", (req, res) => {
-  res.write("teste");
-  res.end();
+  res.render("formulario");
 });
 
 app.listen(8080);
