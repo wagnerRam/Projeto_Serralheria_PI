@@ -22,7 +22,7 @@
     <body>
       <div class="container">
         <h2>Cadastro de Cliente</h2>
-        <form>
+        <form action="cadastrar" method="post">
           <label for="nome">Nome:</label>
           <input type="text" id="nome" name="nome" required />
 
@@ -40,8 +40,8 @@
             onchange="atualizarCampoDocumento()"
           >
             <option value="">Selecione</option>
-            <option value="pf">Pessoa Física</option>
-            <option value="pj">Pessoa Jurídica</option>
+            <option value="PF">Pessoa Física</option>
+            <option value="PJ">Pessoa Jurídica</option>
           </select>
 
           <label for="documento" id="labelDocumento">CPF:</label>
@@ -55,11 +55,11 @@
         function atualizarCampoDocumento() { const tipoCliente =
         document.getElementById("tipoCliente").value; const labelDocumento =
         document.getElementById("labelDocumento"); const campoDocumento =
-        document.getElementById("documento"); if (tipoCliente === "pf") {
+        document.getElementById("documento"); if (tipoCliente === "PF") {
         labelDocumento.textContent = "CPF:"; campoDocumento.placeholder =
         "Digite o CPF"; campoDocumento.setAttribute("pattern", "\\d{11}");
         campoDocumento.title = "CPF deve conter 11 dígitos numéricos"; } else if
-        (tipoCliente === "pj") { labelDocumento.textContent = "CNPJ:";
+        (tipoCliente === "PJ") { labelDocumento.textContent = "CNPJ:";
         campoDocumento.placeholder = "Digite o CNPJ";
         campoDocumento.setAttribute("pattern", "\\d{14}"); campoDocumento.title
         = "CNPJ deve conter 14 dígitos numéricos"; } else {
