@@ -10,6 +10,7 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -32,6 +33,8 @@ db.connect((erro) => {
 
 app.get("/", (req, res) => res.render("formulario"));
 // renderizando pagina web
+
+app.get("/teste", (req, res) => res.render("teste"));
 
 app.post("/cadastrar", (req, res) => {
   // Obter dados do cliente para BD
