@@ -15,9 +15,9 @@ app.use(express.urlencoded({ extended: false }));
 
 const db = mysql.createConnection({
   host: "localhost",
-  port: 3307,
+  port: 3306,
   user: "root",
-  password: "123456",
+  password: "12345",
   database: "serralheria",
   multipleStatements: true,
 });
@@ -30,14 +30,50 @@ db.connect((erro) => {
   console.log("Conectado ao banco de dados MySQL");
 });
 
-// renderizando pagina web
 app.get("/", (req, res) => res.render("formulario"));
-
-//rota de cadastro
+// renderizando pagina web
 
 app.post("/cadastrar", (req, res) => {
-  console.log(req.body);
-  res.end();
+  // Obter dados do cliente para BD
+  let nome = req.body.nome;
+  let endereco = req.body.endereco;
+  let telefone = req.body.telefone;
+  let tipoCliente = req.body.tipoCliente;
+  let documento = req.body.documento;
+
+  // Definir a variável insertSQL fora da função
+  let insertSQL;
+
+  // Função para inserir cliente no banco
+  const insertClient = (nome, endereco, telefone, tipoCliente, documento) => {
+    // Verifique o tipo de cliente e construa a SQL
+    if (tipoCliente === "PF") {
+      insertSQL = `INSERT INTO clientes (nm_cliente, ds_cliente, tel_cliente, tp_cliente, cpf, cnpj)
+                   VALUES ('${nome}', '${endereco}', '${telefone}', '${tipoCliente}', '${documento}', NULL)`;
+    } else if (tipoCliente === "PJ") {
+      insertSQL = `INSERT INTO clientes (nm_cliente, ds_cliente, tel_cliente, tp_cliente, cpf, cnpj)
+                   VALUES ('${nome}', '${endereco}', '${telefone}', '${tipoCliente}', NULL, '${documento}')`;
+    } else {
+      console.log('Tipo de cliente inválido. Use "PF" ou "PJ" apenas!');
+      return; // Se o tipo de cliente for inválido, não execute a query
+    }
+
+    // Executar a query
+    db.query(insertSQL, (erro, sucesso) => {
+      if (erro) {
+        console.log("Erro ao inserir cliente:", erro);
+        res.status(500).send("Erro ao inserir cliente");
+      } else {
+        console.log("Cliente inserido com sucesso:", sucesso);
+        res.status(200).send("Cliente cadastrado com sucesso");
+      }
+    });
+  };
+
+  // Chamar a função para inserir o cliente
+  insertClient(nome, endereco, telefone, tipoCliente, documento);
 });
 
-app.listen(8080);
+app.listen(8080, () => {
+  console.log("Servidor rodando na porta 8080");
+});
