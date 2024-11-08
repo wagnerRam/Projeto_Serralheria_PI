@@ -14,6 +14,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// configuracao do banco
 const db = mysql.createConnection({
   host: "localhost",
   port: 3306,
