@@ -5,6 +5,8 @@ const mysql = require("mysql");
 
 const app = express();
 
+app.use("bootstrap", express.static("./node_modules/bootstrap/dist"));
+
 // configuracao do express-handlebars
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");

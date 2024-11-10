@@ -1,4 +1,10 @@
-<main>  
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style\form.css" />
+  </head>
   <body>
     <div class="container">
       <div class="content first-content">
@@ -96,11 +102,7 @@
           <form class="form">
             <label class="label-input" for="documento">
               <i class="far fa-file icon-modify"></i>
-              <input
-                type="text"
-                id="documentoLogin"
-                placeholder="Documento"
-              />
+              <input type="text" id="documentoLogin" placeholder="Documento" />
             </label>
             <label class="label-input" for="senha">
               <i class="fas fa-lock icon-modify"></i>
@@ -113,31 +115,6 @@
       </div>
     </div>
 
-    <script>
-      // Função para atualizar o campo de acordo com o tipo de cliente selecionado
-      function atualizarCampoDocumento() {
-        const tipoCliente = document.getElementById("tipoCliente").value;
-        const campoDocumento = document.getElementById("documento");
-
-        if (tipoCliente === "PF") {
-          // Se for CPF
-          campoDocumento.placeholder = "Digite o CPF";
-          campoDocumento.setAttribute("pattern", "\\d{11}"); // 11 dígitos para CPF
-          campoDocumento.title = "CPF deve conter 11 dígitos numéricos";
-        } else if (tipoCliente === "PJ") {
-          // Se for CNPJ
-          campoDocumento.placeholder = "Digite o CNPJ";
-          campoDocumento.setAttribute("pattern", "\\d{14}"); // 14 dígitos para CNPJ
-          campoDocumento.title = "CNPJ deve conter 14 dígitos numéricos";
-        } else {
-          // Se não for selecionado (ou selecionado vazio)
-          campoDocumento.placeholder = "Insira seu CPF ou CNPJ";
-          campoDocumento.removeAttribute("pattern");
-          campoDocumento.removeAttribute("title");
-        }
-      }
-
-      // Chama a função ao carregar a página para garantir que o placeholder esteja correto
-      window.onload = atualizarCampoDocumento;
-    </script>
+    <script src="script/script.js"></script>
   </body>
+</html>
