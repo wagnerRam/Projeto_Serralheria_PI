@@ -32,10 +32,10 @@ db.connect((erro) => {
   console.log("Conectado ao banco de dados MySQL");
 });
 
-app.get("/", (req, res) => res.render("formulario"));
+app.get("/", (req, res) => res.render("home"));
 // renderizando pagina web
 
-app.get("/teste", (req, res) => res.render("teste"));
+app.get("/formulario", (req, res) => res.render("formulario"));
 
 app.post("/cadastrar", (req, res) => {
   // Obter dados do cliente para BD
@@ -62,7 +62,6 @@ app.post("/cadastrar", (req, res) => {
       return; // Se o tipo de cliente for inválido, não execute a query
     }
 
-    // Executar a query
     db.query(insertSQL, (erro, sucesso) => {
       if (erro) {
         console.log("Erro ao inserir cliente:", erro);

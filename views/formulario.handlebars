@@ -1,54 +1,143 @@
-<main>
-    <body>
-      <div class="container">
-        <h2>Cadastro de Cliente</h2>
-        <form action="cadastrar" method="post">
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required />
+<main>  
+  <body>
+    <div class="container">
+      <div class="content first-content">
+        <div class="first-column">
+          <h2 class="title title-primary">Bem vindo de volta!</h2>
+          <p class="description description-primary">
+            Para se manter conectado conosco
+          </p>
+          <p class="description description-primary">
+            por favor logue com suas informações pessoais
+          </p>
+          <button id="signin" class="btn btn-primary">Logar</button>
+        </div>
+        <div class="second-column">
+          <h2 class="title title-second">Criar conta</h2>
+          <p class="description description-second">
+            Todos os campos são obrigatórios!
+          </p>
+          <form action="Cadastrar" method="post" class="form">
+            <label class="label-input" for="name">
+              <i class="far fa-user icon-modify"></i>
+              <input
+                type="text"
+                name="nome"
+                placeholder="Nome Completo"
+                required
+              />
+            </label>
+            <label class="label-input" for="endereco">
+              <i class="far fa-address-book icon-modify"></i>
+              <input
+                type="text"
+                name="endereco"
+                placeholder="Endereço Completo"
+                required
+              />
+            </label>
+            <label class="label-input" for="telefone">
+              <i class="fas fa-phone icon-modify"></i>
+              <input
+                type="tel"
+                name="telefone"
+                placeholder="Telefone para contato"
+              />
+            </label>
+            <label class="label-input" for="tipoCliente">
+              <i class="far fa-file icon-modify"></i>
+              <select
+                class="label-input-select"
+                name="tipoCliente"
+                id="tipoCliente"
+                onchange="atualizarCampoDocumento()"
+              >
+                <option value=""></option>
+                <option value="PF">CPF</option>
+                <option value="PJ">CNPJ</option>
+              </select>
+            </label>
 
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" name="endereco" required />
+            <label class="label-input" for="documento">
+              <i class="far fa-file icon-modify"></i>
+              <input
+                type="text"
+                placeholder="Insira seu CPF"
+                name="documento"
+                id="documento"
+                required
+              />
+            </label>
+            <label class="label-input">
+              <i class="fas fa-lock icon-modify"></i>
+              <input type="password" placeholder="Senha" />
+            </label>
 
-          <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" name="telefone" required />
-
-          <label for="tipoCliente">Tipo de Cliente:</label>
-          <select
-            id="tipoCliente"
-            name="tipoCliente"
-            required
-            onchange="atualizarCampoDocumento()"
-          >
-            <option value="">Selecione</option>
-            <option value="PF">Pessoa Física</option>
-            <option value="PJ">Pessoa Jurídica</option>
-          </select>
-
-          <label for="documento" id="labelDocumento">CPF:</label>
-          <input type="text" id="documento" name="documento" required />
-
-          <button type="submit">Cadastrar</button>
-        </form>
+            <button class="btn btn-second">Cadastrar</button>
+          </form>
+        </div>
       </div>
+      <div class="content second-content">
+        <div class="first-column">
+          <h2 class="title title-primary">Olá Cliente!</h2>
+          <p class="description description-primary">
+            Insira seus dados pessoais
+          </p>
+          <p class="description description-primary">
+            e de início a sua jornada conosco!
+          </p>
+          <button id="signup" class="btn btn-primary">cadastrar</button>
+        </div>
+        <div class="second-column">
+          <h2 class="title title-second">Logar na sua conta</h2>
+          <p class="description description-second">
+            Insira seu CPF ou CNPJ e senha
+          </p>
+          <form class="form">
+            <label class="label-input" for="documento">
+              <i class="far fa-file icon-modify"></i>
+              <input
+                type="text"
+                id="documentoLogin"
+                placeholder="Documento"
+              />
+            </label>
+            <label class="label-input" for="senha">
+              <i class="fas fa-lock icon-modify"></i>
+              <input type="password" placeholder="Senha" />
+            </label>
+            <a class="password" href="#">Esqueceu sua senha?</a>
+            <button class="btn btn-second">Logar</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-      <script>
-        function atualizarCampoDocumento() { const tipoCliente =
-        document.getElementById("tipoCliente").value; const labelDocumento =
-        document.getElementById("labelDocumento"); const campoDocumento =
-        document.getElementById("documento"); if (tipoCliente === "PF") {
-        labelDocumento.textContent = "CPF:"; campoDocumento.placeholder =
-        "Digite o CPF"; campoDocumento.setAttribute("pattern", "\\d{11}");
-        campoDocumento.title = "CPF deve conter 11 dígitos numéricos"; } else if
-        (tipoCliente === "PJ") { labelDocumento.textContent = "CNPJ:";
-        campoDocumento.placeholder = "Digite o CNPJ";
-        campoDocumento.setAttribute("pattern", "\\d{14}"); campoDocumento.title
-        = "CNPJ deve conter 14 dígitos numéricos"; } else {
-        labelDocumento.textContent = "CPF ou CNPJ:"; campoDocumento.placeholder
-        = ""; campoDocumento.removeAttribute("pattern"); } }
-      </script>
+    <script>
+      // Função para atualizar o campo de acordo com o tipo de cliente selecionado
+      function atualizarCampoDocumento() {
+        const tipoCliente = document.getElementById("tipoCliente").value;
+        const campoDocumento = document.getElementById("documento");
 
-    </body>
+        if (tipoCliente === "PF") {
+          // Se for CPF
+          campoDocumento.placeholder = "Digite o CPF";
+          campoDocumento.setAttribute("pattern", "\\d{11}"); // 11 dígitos para CPF
+          campoDocumento.title = "CPF deve conter 11 dígitos numéricos";
+        } else if (tipoCliente === "PJ") {
+          // Se for CNPJ
+          campoDocumento.placeholder = "Digite o CNPJ";
+          campoDocumento.setAttribute("pattern", "\\d{14}"); // 14 dígitos para CNPJ
+          campoDocumento.title = "CNPJ deve conter 14 dígitos numéricos";
+        } else {
+          // Se não for selecionado (ou selecionado vazio)
+          campoDocumento.placeholder = "Insira seu CPF ou CNPJ";
+          campoDocumento.removeAttribute("pattern");
+          campoDocumento.removeAttribute("title");
+        }
+      }
 
-  </html>
-
-</main>
+      // Chama a função ao carregar a página para garantir que o placeholder esteja correto
+      window.onload = atualizarCampoDocumento;
+    </script>
+  </body>
