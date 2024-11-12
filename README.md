@@ -28,7 +28,7 @@ Antes de começar, você precisará ter instalado em sua máquina:
    git clone https://github.com/SeuUsuario/SeuRepositorio.git
 Navegue até o diretório do projeto:
 
-      cd SeuRepositorio.
+      cd Projeto_Serralheria_PI.
 
 
 Instale as dependências:
