@@ -1,7 +1,7 @@
-# Sistema de Cadastro para Serralheria
+# Sistema de Cadastro 
 
 ## Descrição
-Este é um projeto acadêmico desenvolvido para atender às necessidades de um cliente real, o proprietário de uma serralheria, como parte do curso de Análise e Desenvolvimento de Sistemas. O objetivo principal foi criar uma aplicação web que permite o cadastro e gerenciamento de informações de clientes, armazenando os dados de forma segura e eficiente em um banco de dados.
+Este é um projeto acadêmico desenvolvido para atender às necessidades de um cliente real, como parte do curso de Análise e Desenvolvimento de Sistemas. O objetivo principal foi criar uma aplicação web que permite o cadastro e gerenciamento de informações de clientes, armazenando os dados de forma segura e eficiente em um banco de dados.
 
 ## Funcionalidades
 - Cadastro de clientes com informações como nome, telefone, e endereço.
