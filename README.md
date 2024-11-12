@@ -12,7 +12,7 @@ Este é um projeto acadêmico desenvolvido para atender às necessidades de um c
 ## Tecnologias Utilizadas
 - **Frontend**: HTML, CSS, e JavaScript
 - **Backend**: Node.js e Express
-- **Templates Dinâmicos**: Handlebars
+- **Templates Dinâmicos**: Express Handlebars
 - **Banco de Dados**: MySQL
 
 ## Instalação
