@@ -24,27 +24,26 @@ Antes de começar, você precisará ter instalado em sua máquina:
 
 ### Passo a Passo
 1. Clone o repositório:
-   ```bash
+   ```
    git clone https://github.com/SeuUsuario/SeuRepositorio.git
 Navegue até o diretório do projeto:
 
-bash
-Copiar código
-cd SeuRepositorio
+      cd SeuRepositorio.
+
+
 Instale as dependências:
 
-bash
-Copiar código
-npm install
+
+      npm install
+
 Configure o banco de dados MySQL:
 
 ### Crie uma nova base de dados.
 Atualize as credenciais do banco de dados no arquivo de configuração do projeto (config.js ou .env).
 Inicie o servidor:
 
-bash
-Copiar código
-npm start
+      npm start
+
 Acesse a aplicação em http://localhost:8080.
 
 ### Uso
